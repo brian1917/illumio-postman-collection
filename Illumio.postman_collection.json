@@ -1,0 +1,404 @@
+{
+	"info": {
+		"_postman_id": "f02ede43-98d6-4ac3-9b0e-ab8847dd084b",
+		"name": "Illumio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET Events",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{fqdn}}:{{port}}/api/{{version}}/orgs/{{org}}/events",
+					"protocol": "https",
+					"host": [
+						"{{fqdn}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"{{version}}",
+						"orgs",
+						"{{org}}",
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Traffic",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"start_date\": \"2013-01-01T00:00:00Z\",\n    \"end_date\": \"2020-12-30T00:00:00Z\",\n    \"policy_decisions\": [\n        \"allowed\",\n        \"potentially_blocked\",\n        \"blocked\"\n    ],\n    \"sources\": {\n        \"include\": [\n            []\n        ],\n        \"exclude\": []\n    },\n    \"destinations\": {\n        \"include\": [\n            []\n        ],\n        \"exclude\": []\n    },\n    \"services\": {\n        \"include\": [\n            {\n                \"port\": 443,\n                \"proto\": 6\n            }\n        ],\n        \"exclude\": []\n    },\n    \"max_results\": 100\n}"
+				},
+				"url": {
+					"raw": "https://{{fqdn}}:{{port}}/api/{{version}}/orgs/{{org}}/traffic_flows/traffic_analysis_queries",
+					"protocol": "https",
+					"host": [
+						"{{fqdn}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"{{version}}",
+						"orgs",
+						"{{org}}",
+						"traffic_flows",
+						"traffic_analysis_queries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE Label",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"key\": \"role\",\n    \"value\": \"api-role-test\"\n}"
+				},
+				"url": {
+					"raw": "https://{{fqdn}}:{{port}}/api/{{version}}/orgs/{{org}}/labels",
+					"protocol": "https",
+					"host": [
+						"{{fqdn}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"{{version}}",
+						"orgs",
+						"{{org}}",
+						"labels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET LABELS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{fqdn}}:{{port}}/api/{{version}}/orgs/{{org}}/labels",
+					"protocol": "https",
+					"host": [
+						"{{fqdn}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"{{version}}",
+						"orgs",
+						"{{org}}",
+						"labels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET WORKLOADS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{fqdn}}:{{port}}/api/{{version}}/orgs/{{org}}/workloads",
+					"protocol": "https",
+					"host": [
+						"{{fqdn}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"{{version}}",
+						"orgs",
+						"{{org}}",
+						"workloads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE Unmanaged Workload",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"umwl-from-api\",\n    \"hostname\": \"umwl-from-api\",\n    \"interfaces\": [\n        {\n            \"name\": \"eth0\",\n            \"address\": \"10.10.10.10\"\n        }\n    ],\n    \"labels\": [\n        {\n            \"href\": \"/orgs/75/labels/8342\"\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "https://{{fqdn}}:{{port}}/api/{{version}}/orgs/{{org}}/workloads",
+					"protocol": "https",
+					"host": [
+						"{{fqdn}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"{{version}}",
+						"orgs",
+						"{{org}}",
+						"workloads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE Unmanaged Workload",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"interfaces\": [\n        {\n            \"name\": \"eth0\",\n            \"address\": \"10.10.10.200\"\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "https://{{fqdn}}:{{port}}/api/{{version}}/orgs/{{org}}/workloads/2d532384-de8b-4bd8-811e-05a5f9015900",
+					"protocol": "https",
+					"host": [
+						"{{fqdn}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"{{version}}",
+						"orgs",
+						"{{org}}",
+						"workloads",
+						"2d532384-de8b-4bd8-811e-05a5f9015900"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BULK Create Unmanaged Workloads",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\"name\":\"Bulk 1\"},{\"name\":\"Bulk 2\"}]"
+				},
+				"url": {
+					"raw": "https://{{fqdn}}:{{port}}/api/{{version}}/orgs/{{org}}/workloads/bulk_create",
+					"protocol": "https",
+					"host": [
+						"{{fqdn}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"{{version}}",
+						"orgs",
+						"{{org}}",
+						"workloads",
+						"bulk_create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Product Version",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{fqdn}}:{{port}}/api/{{version}}/product_version",
+					"protocol": "https",
+					"host": [
+						"{{fqdn}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"{{version}}",
+						"product_version"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET API Keys",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{fqdn}}:{{port}}/api/{{version}}/users/130/api_keys",
+					"protocol": "https",
+					"host": [
+						"{{fqdn}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"{{version}}",
+						"users",
+						"130",
+						"api_keys"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE API Key",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{{fqdn}}:{{port}}/api/{{version}}/orgs/25/labels/3136",
+					"protocol": "https",
+					"host": [
+						"{{fqdn}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"{{version}}",
+						"orgs",
+						"25",
+						"labels",
+						"3136"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPGRADE VEN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://{{fqdn}}:{{port}}/api/{{version}}/orgs/{{org}}/workloads",
+					"protocol": "https",
+					"host": [
+						"{{fqdn}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"{{version}}",
+						"orgs",
+						"{{org}}",
+						"workloads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET LABELGROUPS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{fqdn}}:{{port}}/api/{{version}}/orgs/{{org}}/sec_policy/draft/label_groups",
+					"protocol": "https",
+					"host": [
+						"{{fqdn}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"{{version}}",
+						"orgs",
+						"{{org}}",
+						"sec_policy",
+						"draft",
+						"label_groups"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "username",
+				"value": "{{api_user}}",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "{{api_secret}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "d12c3444-2921-4190-b2e6-dbf044a488b7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "038f0093-380a-48fc-ba2c-6a57aaca3d6a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
